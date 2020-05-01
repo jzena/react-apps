@@ -29,7 +29,7 @@ const allReducer = (
   products: productReducer(products, action),
   shoppingCart: shoppingCartReducer(shoppingCart, action)
 });
-const mainReducer = (process.env.NODE_ENV === 'development' ? logger(allReducer) : allReducer);
+const mainReducer = (process.env.NODE_ENV === 'production' ? allReducer : logger(allReducer));
 
 const AppProvider: React.FC = ({ children }) => {
   const [state, dispatch] = useReducer(mainReducer, initialState);

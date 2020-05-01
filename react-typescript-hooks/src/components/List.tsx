@@ -37,7 +37,7 @@ const List = () => {
   }
 
   return (
-    <div>
+    <div className="list-container">
       <input
         value={form.name}
         onChange={e => {
@@ -55,9 +55,9 @@ const List = () => {
       />
       <button onClick={createProduct}>create</button>
       <div style={{ marginTop: 20 }}>
-        {state.products.map(c => (
-          <div>
-            <span>{c.name}</span>
+        {state.products.map((c, index) => (
+          <div key={index}>
+            <span>{c.name}</span>-
             <span>{c.price}</span>
             <button onClick={() => deleteProduct(c.id)}>delete</button>
           </div>

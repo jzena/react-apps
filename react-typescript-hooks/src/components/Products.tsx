@@ -6,7 +6,7 @@ const Products = () => {
   const { state, dispatch } = React.useContext(AppContext);
 
   return (
-    <div>
+    <div className="counter-click-container">
       <button
         onClick={() => {
           dispatch({
