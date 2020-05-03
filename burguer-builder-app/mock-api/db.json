@@ -1,0 +1,28 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "John"
+    },
+    {
+      "id": 2,
+      "username": "Jose"
+    },
+    {
+      "id": 3,
+      "username": "Diego"
+    }
+  ],
+  "proveedores": [
+    {
+      "id": 1,
+      "username": "John"
+    }
+  ],
+  "ingredients": {
+      "salad": [],
+      "cheese":[] ,
+      "meat": [],
+      "bacon": []
+  }
+}

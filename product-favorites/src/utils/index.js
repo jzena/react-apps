@@ -1,11 +1,12 @@
 import { globalState } from './../hooks-store/store'
 export const logger = (dispatch) => {
   const dispatchWithLogger = (type, payload) => {
+    console.group(`Action ${type}`);
     console.log("%cPrevious State:", "color: #9E9E9E; font-weight: 700;", globalState);
     console.log("%cAction:", "color: #00A7F7; font-weight: 700;", { type, payload });
     const responseDispatch = dispatch(type, payload)
     console.log("%cNext State:", "color: #47B04B; font-weight: 700;", responseDispatch);
-
+    console.groupEnd();
     return responseDispatch;
   };
   return dispatchWithLogger;
