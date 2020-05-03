@@ -8,7 +8,7 @@ let actions = {};
 const useStore = (shouldListen = true) => {
   const setState = useState(globalState)[1];
 
-  const dispatch = (type, payload) => {
+  const dispatch = ({type, payload}) => {
     const fnAction = actions[type];
     if (!fnAction) {
       return globalState;

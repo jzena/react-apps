@@ -1,10 +1,10 @@
 import { globalState } from './../hooks-store/store'
 export const logger = (dispatch) => {
-  const dispatchWithLogger = (type, payload) => {
-    console.group(`Action ${type}`);
+  const dispatchWithLogger = ({type, payload}) => {
+    console.group(`Action ${ type }`);
     console.log("%cPrevious State:", "color: #9E9E9E; font-weight: 700;", globalState);
     console.log("%cAction:", "color: #00A7F7; font-weight: 700;", { type, payload });
-    const responseDispatch = dispatch(type, payload)
+    const responseDispatch = dispatch({type, payload})
     console.log("%cNext State:", "color: #47B04B; font-weight: 700;", responseDispatch);
     console.groupEnd();
     return responseDispatch;
@@ -29,21 +29,21 @@ export function wrapperDispatch(dispatch) {
     Rejected: 'REJECTED',
   };
 
-  return function (type, payload) {
+  return function ({ type, payload }) {
     let TYPE;
     if (isPromise(payload)) {
       TYPE = [type, ACTION_TYPE.Pending].join(PROMISE_TYPE_DELIMITER);
-      dispatch(TYPE);
+      dispatch({ type: TYPE });
 
       return payload.then(v => {
         TYPE = [type, ACTION_TYPE.Fulfilled].join(PROMISE_TYPE_DELIMITER);
-        return dispatch(TYPE, v);
+        return dispatch({ type: TYPE, payload: v });
       }).catch(error => {
         TYPE = [type, ACTION_TYPE.Rejected].join(PROMISE_TYPE_DELIMITER);
-        return dispatch(TYPE, error)
+        return dispatch({ type: TYPE, payload: error })
       });
     } else {
-      dispatch(type, payload);
+      dispatch({ type, payload });
     }
   };
 }

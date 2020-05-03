@@ -8,7 +8,7 @@ const FavoriteItem = React.memo(props => {
   console.log('FavoriteItem Component');
   const dispatch = useStore(false)[1];
   function toggleFavHandler() {
-    dispatch('TOGGLE_FAV', props.id);
+    dispatch({ type: 'TOGGLE_FAV', payload: props.id });
   };
   return (
     <Card style={ { marginBottom: '1rem' } }>
@@ -19,7 +19,7 @@ const FavoriteItem = React.memo(props => {
           className={ !props.isFav ? 'button-outline' : '' }
           onClick={ toggleFavHandler.bind(this) }
         >
-          { 'Un-Favorite'}
+          { 'Un-Favorite' }
         </button>
       </div>
     </Card>

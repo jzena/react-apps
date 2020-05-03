@@ -9,19 +9,19 @@ const ProductItem = React.memo(props => {
   const dispatch = useStore(false)[1];
 
   function toggleFavHandler() {
-    dispatch('TOGGLE_FAV', props.id);
+    dispatch({ type: 'TOGGLE_FAV', payload: props.id });
   };
 
   return (
-    <Card style={{ marginBottom: '1rem' }}>
+    <Card style={ { marginBottom: '1rem' } }>
       <div className="product-item">
-        <h2 className={props.isFav ? 'is-fav' : ''}>{props.title}</h2>
-        <p>{props.description}</p>
+        <h2 className={ props.isFav ? 'is-fav' : '' }>{ props.title }</h2>
+        <p>{ props.description }</p>
         <button
-          className={!props.isFav ? 'button-outline' : ''}
-          onClick={toggleFavHandler.bind(this)}
+          className={ !props.isFav ? 'button-outline' : '' }
+          onClick={ toggleFavHandler.bind(this) }
         >
-          {props.isFav ? 'Un-Favorite' : 'Favorite'}
+          { props.isFav ? 'Un-Favorite' : 'Favorite' }
         </button>
       </div>
     </Card>

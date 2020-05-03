@@ -6,10 +6,12 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "3.0.1"
+    "react-scripts": "3.0.1",
+    "axios": "^0.19.2"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "api": "json-server mock-api/db.json --port 3004 --middlewares mock-api/middleware.js --watch",
+    "start": "yarn api & react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -28,5 +30,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "json-server": "^0.16.1"
   }
 }

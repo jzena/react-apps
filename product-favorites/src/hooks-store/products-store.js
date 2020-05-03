@@ -2,34 +2,19 @@ import { initStore } from './store';
 
 const configureStore = () => {
   const initialState = {
-    products: [
-      {
-        id: 'p1',
-        title: 'Red Scarf',
-        description: 'A pretty red scarf.',
-        isFavorite: false
-      },
-      {
-        id: 'p2',
-        title: 'Blue T-Shirt',
-        description: 'A pretty blue t-shirt.',
-        isFavorite: false
-      },
-      {
-        id: 'p3',
-        title: 'Green Trousers',
-        description: 'A pair of lightly green trousers.',
-        isFavorite: false
-      },
-      {
-        id: 'p4',
-        title: 'Orange Hat',
-        description: 'Street style! An orange hat.',
-        isFavorite: false
-      }
-    ]
+    products: [],
+    loadingProducts: false
   };
   const actions = {
+    FETCH_PRODUCTS_PENDING: (state, payload) => ({ loadingProducts: true }),
+    FETCH_PRODUCTS_REJECTED: (state, payload) => ({ loadingProducts: false }),
+    FETCH_PRODUCTS_FULFILLED: (state, payload) => {
+      return {
+        ...state,
+        products: payload.data,
+        loadingProducts: false
+      }
+    },
     TOGGLE_FAV: (curState, productId) => {
       const prodIndex = curState.products.findIndex(p => p.id === productId);
       const newFavStatus = !curState.products[prodIndex].isFavorite;
@@ -41,7 +26,7 @@ const configureStore = () => {
       return { products: updatedProducts };
     }
   };
-  
+
   initStore(actions, initialState);
 };
 
