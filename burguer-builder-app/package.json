@@ -50,7 +50,7 @@
   },
   "scripts": {
     "api": "json-server mock-api/db.json --port 3004 --middlewares mock-api/middleware.js --watch",
-    "start": "node scripts/start.js",
+    "start": "yarn api & node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom"
   },

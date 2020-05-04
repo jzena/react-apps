@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 
 import ProductItem from '../components/Products/ProductItem';
+import Spinner from './../components/UI/Spinner/Spinner'
 import { useStore } from '../hooks-store/store';
 import { fetchProducts } from './../hooks-store/actions/products-action';
 import './Products.css';
@@ -12,7 +13,7 @@ const Products = props => {
   }, [])
   return (
     <ul className="products-list">
-      { state.loadingProducts ? <p>Loading products...</p> :
+      { state.loadingProducts ? <Spinner /> :
         state.products.map(prod => (
           <ProductItem
             key={ prod.id }

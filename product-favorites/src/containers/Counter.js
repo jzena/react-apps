@@ -43,7 +43,7 @@ const Counter = props => {
       } }>Promise</button>
       <button onClick={ async () => {
         const res = await runAnotherPromise(200).withDispatch(dispatch);
-        console.log('res:::', res);
+        console.log('res:::', console.log(res));
       } }>Promise 2</button>
     </div>
   );
